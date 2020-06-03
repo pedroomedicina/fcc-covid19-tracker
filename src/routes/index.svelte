@@ -3,10 +3,9 @@
     export async function preload(){
         try {
             const usStats = await requests.usStats();
-
             return {usStats};
         } catch (error) {
-            console.log(error)
+            this.error(500, error.message);
         }
     }
 </script>
@@ -17,7 +16,6 @@
     import TableContainer from '../components/TableContainer.svelte';
 
     export let usStats;
-    console.log('usStats', usStats);
 </script>
 
 <svelte:head>
@@ -30,6 +28,6 @@
     </div>
 </div>
 
-<CovidStat />
+<CovidStat {...usStats}/>
 <CovidChart />
 <TableContainer />
