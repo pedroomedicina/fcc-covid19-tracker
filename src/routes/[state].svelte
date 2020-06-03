@@ -1,5 +1,6 @@
 <script context="module">
     import stateNames from '../data/stateNames.js';
+    import requests from '../data/requests.js';
 
     export async function preload(page){
         const state = page.params["state"];
@@ -9,7 +10,8 @@
         }
 
         try {
-            return { state: page.params['state'] };   
+            const stats = await requests.stateStats(state);
+            return { state, stats};   
         } catch (error) {
             this.error(500, 'Sorry, API is not available')
         }
@@ -20,6 +22,7 @@
     import CovidStat from '../components/CovidStat.svelte';
     import CovidChart from '../components/CovidChart.svelte';
     export let state;
+    export let stats;
 </script>
 
 <svelte:head>
@@ -32,5 +35,5 @@
     </div>
 </div>
 
-<CovidStat />
+<CovidStat {...stats}/>
 <CovidChart />
