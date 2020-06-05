@@ -18,7 +18,6 @@
 
     export let usStats;
     export let historic;
-    console.log(historic)
 </script>
 
 <svelte:head>
