@@ -32,5 +32,5 @@
 </div>
 
 <CovidStat {...usStats}/>
-<CovidChart />
+<CovidChart historicData={historic} title="US Covid-19"/>
 <TableContainer />
