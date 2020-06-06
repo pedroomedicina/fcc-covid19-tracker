@@ -5,7 +5,6 @@
     export let data;
     let sortBy = 'name';
     let stateName = '';
-    console.log(data);
     $: states = filterAndSort(data, stateName, sortBy);
 
     function filterAndSort(states, stateName, sortBy) {
@@ -23,6 +22,5 @@
     }
 </script>
 
-<h1>{stateName} /|\ {sortBy}</h1>
 <TableFilter bind:stateName bind:sortBy />
 <Table {states} />
